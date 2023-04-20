@@ -1,5 +1,9 @@
 const Footer = () => {
-  return <div></div>;
+  return (
+    <div className="p-6 text-center text-white bg-slate-900">
+      <h1 className="text-sm text-slate-500">Ⓒ 2022 #VANLIFE</h1>
+    </div>
+  );
 };
 
 export default Footer;
