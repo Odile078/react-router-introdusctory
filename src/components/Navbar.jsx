@@ -8,10 +8,10 @@ const Navbar = () => {
         className="object-contain object-center w-32 sm:w-44"
         alt="Logo"
       />
-      <div className="flex gap-4">
+      <div className="flex gap-6">
         {[
-          { name: "Home", url: "/" },
           { name: "About", url: "/about" },
+          { name: "Vans", url: "/vans" },
         ].map((link, index) => (
           <Link
             key={index}
