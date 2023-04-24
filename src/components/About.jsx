@@ -6,16 +6,16 @@ const About = () => {
         className="object-cover object-center w-full max-h-96"
         src={aboutImg}
       />
-      <div className="max-w-5xl mx-6 space-y-6 font-bold">
+      <div className="max-w-5xl mx-6 space-y-6 ">
         <h1 className="text-3xl font-bold text-gray-900">
           Don’t squeeze in a sedan when you could relax in a van.
         </h1>
-        <p className="text-sm text-gray-900">
+        <p className="text-lg text-gray-900">
           Our mission is to enliven your road trip with the perfect travel van
           rental. Our vans are recertified before each trip to ensure your
           travel plans can go off without a hitch. (Hitch costs extra 😉)
         </p>
-        <p className="text-sm text-gray-800">
+        <p className="text-lg text-gray-800">
           Our team is full of vanlife enthusiasts who know firsthand the magic
           of touring the world on 4 wheels.
         </p>
