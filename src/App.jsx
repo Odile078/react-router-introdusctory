@@ -3,6 +3,8 @@ import Home from "./components/Home";
 import About from "./components/About";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
+import "./server";
+import Vans from "./components/Vans";
 function App() {
   return (
     <BrowserRouter>
@@ -11,6 +13,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
+          <Route path="/vans" element={<Vans />} />
         </Routes>
         <Footer />
       </div>
