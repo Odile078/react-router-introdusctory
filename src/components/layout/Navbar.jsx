@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import Logo from "../assets/images/logo-small.svg";
+import Logo from "../../assets/images/logo-small.svg";
 const Navbar = () => {
   return (
     <div className="flex justify-between gap-4 px-4 py-9 bg-orange-50">

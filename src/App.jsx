@@ -1,11 +1,11 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import Home from "./components/Home";
-import About from "./components/About";
-import Navbar from "./components/Navbar";
-import Footer from "./components/Footer";
+import Home from "./pages/Home";
+import About from "./pages/About";
+import Navbar from "./components/layout/Navbar";
+import Footer from "./components/layout/Footer";
 import "./server";
-import Vans from "./components/Vans";
-import VanDetails from "./components/VanDetails";
+import Vans from "./pages/Vans";
+import VanDetails from "./pages/VanDetails";
 function App() {
   return (
     <BrowserRouter>
