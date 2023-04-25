@@ -6,19 +6,18 @@ import Footer from "./components/layout/Footer";
 import "./server";
 import Vans from "./pages/Vans";
 import VanDetails from "./pages/VanDetails";
+import BlankLayout from "./components/layout/BlankLayout";
 function App() {
   return (
     <BrowserRouter>
-      <div className="flex flex-col min-h-screen xl:mx-auto max-w-7xl">
-        <Navbar />
-        <Routes>
-          <Route path="/" element={<Home />} />
+      <Routes>
+        <Route element={<BlankLayout />}>
+          <Route index path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
           <Route path="/vans" element={<Vans />} />
           <Route path="/vans/:id" element={<VanDetails />} />
-        </Routes>
-        <Footer />
-      </div>
+        </Route>
+      </Routes>
     </BrowserRouter>
   );
 }

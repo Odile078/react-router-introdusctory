@@ -1,7 +1,7 @@
 import hero from "../assets/images/homeImg.png";
 const Home = () => {
   return (
-    <main className="relative flex items-center justify-center flex-1 p-4 text-4xl font-bold">
+    <div className="relative flex items-center justify-center flex-1 p-4 text-4xl font-bold">
       <img
         className="absolute inset-0 object-cover object-center w-full h-full "
         src={hero}
@@ -18,7 +18,7 @@ const Home = () => {
           Find your van
         </button>
       </div>
-    </main>
+    </div>
   );
 };
 

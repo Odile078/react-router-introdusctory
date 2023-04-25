@@ -21,7 +21,7 @@ const VanDetails = () => {
     getVanDetails();
   }, [id]);
   return (
-    <main className="flex-1 p-4">
+    <div className="flex-1 p-4">
       {loading ? (
         <p>loading...</p>
       ) : (
@@ -73,7 +73,7 @@ const VanDetails = () => {
           </div>
         </div>
       )}
-    </main>
+    </div>
   );
 };
 
