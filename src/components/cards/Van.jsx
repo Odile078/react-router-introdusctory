@@ -1,6 +1,8 @@
-const Van = ({ imageUrl, type, name, price, description }) => {
+import { Link } from "react-router-dom";
+
+const Van = ({ id, imageUrl, type, name, price }) => {
   return (
-    <div className="">
+    <Link to={`/vans/${id}`} className="block">
       <img
         src={imageUrl}
         className="object-cover object-center w-full rounded-md h-60"
@@ -26,7 +28,7 @@ const Van = ({ imageUrl, type, name, price, description }) => {
           </p>
         </div>
       </div>
-    </div>
+    </Link>
   );
 };
 
