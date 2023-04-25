@@ -2,7 +2,7 @@ import { Link, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 const VanDetails = () => {
   const { id } = useParams();
-  const [vanDetails, setVanDetails] = useState([]);
+  const [vanDetails, setVanDetails] = useState({});
   const { imageUrl, type, name, price, description } = vanDetails;
   const [loading, setLoading] = useState(false);
   const getVanDetails = async () => {
@@ -10,7 +10,6 @@ const VanDetails = () => {
       setLoading(true);
       const response = await fetch(`/api/vans/${id}`);
       const vanData = await response.json();
-      console.log("vanDetails", vanData);
       setLoading(false);
       setVanDetails(vanData?.vans);
     } catch (err) {
@@ -20,7 +19,7 @@ const VanDetails = () => {
   };
   useEffect(() => {
     getVanDetails();
-  }, []);
+  }, [id]);
   return (
     <main className="flex-1 p-4">
       {loading ? (
