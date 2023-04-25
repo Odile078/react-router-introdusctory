@@ -1,7 +1,7 @@
 const Footer = () => {
   return (
     <div className="p-6 text-center text-white bg-stone-900">
-      <h1 className="text-sm text-slate-500">Ⓒ 2022 #VANLIFE</h1>
+      <h1 className="text-sm text-slate-500">Ⓒ 2023 #VANLIFE</h1>
     </div>
   );
 };
