@@ -5,6 +5,7 @@ import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import "./server";
 import Vans from "./components/Vans";
+import VanDetails from "./components/VanDetails";
 function App() {
   return (
     <BrowserRouter>
@@ -14,6 +15,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
           <Route path="/vans" element={<Vans />} />
+          <Route path="/vans/:id" element={<VanDetails />} />
         </Routes>
         <Footer />
       </div>
