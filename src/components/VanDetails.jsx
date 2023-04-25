@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 const VanDetails = () => {
   const { id } = useParams();
@@ -27,7 +27,10 @@ const VanDetails = () => {
         <p>loading...</p>
       ) : (
         <div className="space-y-10">
-          <button className="flex items-center gap-2 text-sm underline">
+          <Link
+            to="/vans"
+            className="flex items-center gap-2 text-sm underline"
+          >
             <svg
               width="14"
               height="11"
@@ -41,7 +44,7 @@ const VanDetails = () => {
               />
             </svg>
             <p>Clear filters</p>
-          </button>
+          </Link>
           <div className="grid grid-cols-1 gap-10 md:grid-cols-2">
             <img
               src={imageUrl}
