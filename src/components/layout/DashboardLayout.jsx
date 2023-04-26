@@ -1,4 +1,4 @@
-import { Outlet } from "react-router-dom";
+import { Link, Outlet } from "react-router-dom";
 
 const DashboardLayout = () => {
   const categories = [
@@ -9,8 +9,8 @@ const DashboardLayout = () => {
   ];
   return (
     <>
-      <div className="flex flex-wrap gap-6 my-10">
-        <div className="flex flex-wrap gap-4 ">
+      <div className="flex flex-wrap gap-6 p-4 my-10">
+        <div className="flex flex-wrap gap-4">
           {categories.map((category, index) => (
             <Link
               key={index}
@@ -22,7 +22,9 @@ const DashboardLayout = () => {
           ))}
         </div>
       </div>
-      <Outlet />
+      <div className="p-4">
+        <Outlet />
+      </div>
     </>
   );
 };
