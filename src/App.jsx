@@ -4,11 +4,11 @@ import About from "./pages/About";
 import Vans from "./pages/vans/Vans";
 import VanDetails from "./pages/vans/VanDetails";
 import BlankLayout from "./components/layout/BlankLayout";
-import "./server";
-import DashboardLayout from "./components/layout/DashboardLayout";
+import HostLayout from "./components/layout/HostLayout";
 import Dashboard from "./pages/host/Dashboard";
 import Income from "./pages/host/Income";
 import Reviews from "./pages/host/Reviews";
+import "./server";
 function App() {
   return (
     <BrowserRouter>
@@ -18,7 +18,7 @@ function App() {
           <Route path="/about" element={<About />} />
           <Route path="/vans" element={<Vans />} />
           <Route path="/vans/:id" element={<VanDetails />} />
-          <Route element={<DashboardLayout />}>
+          <Route element={<HostLayout />}>
             <Route index path="/host" element={<Dashboard />} />
             <Route path="/host/income" element={<Income />} />
             <Route path="/host/vans" element={<Income />} />

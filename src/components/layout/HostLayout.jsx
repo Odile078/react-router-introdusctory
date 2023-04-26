@@ -1,6 +1,6 @@
 import { Link, Outlet } from "react-router-dom";
 
-const DashboardLayout = () => {
+const HostLayout = () => {
   const categories = [
     { name: "Dashboard", url: "/host" },
     { name: "Income", url: "/host/income" },
@@ -29,4 +29,4 @@ const DashboardLayout = () => {
   );
 };
 
-export default DashboardLayout;
+export default HostLayout;
