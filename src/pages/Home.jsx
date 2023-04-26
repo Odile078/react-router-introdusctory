@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import hero from "../assets/images/homeImg.png";
 const Home = () => {
   return (
@@ -14,9 +15,12 @@ const Home = () => {
           Add adventure to your life by joining the #vanlife movement. Rent the
           perfect van to make your perfect road trip.
         </h3>
-        <button className="w-full p-3 text-base text-white bg-orange-400 rounded-md">
+        <Link
+          to="/vans"
+          className="block w-full p-3 text-base text-center text-white bg-orange-400 rounded-md"
+        >
           Find your van
-        </button>
+        </Link>
       </div>
     </div>
   );
