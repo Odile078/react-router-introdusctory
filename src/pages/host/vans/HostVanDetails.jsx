@@ -7,7 +7,7 @@ const HostVanDetails = () => {
   const { imageUrl, type, name, price, description } = vanDetails;
   const [loading, setLoading] = useState(false);
   const categories = [
-    { name: "Details", url: `info` },
+    { name: "Details", url: `.` },
     { name: "Pricing", url: `pricing` },
     { name: "Photos", url: `photos` },
   ];
@@ -94,7 +94,7 @@ const HostVanDetails = () => {
               </NavLink>
             ))}
           </div>
-          <Outlet />
+          <Outlet context={{ vanDetails }} />
         </div>
       )}
     </div>
