@@ -3,9 +3,9 @@ import { Link, NavLink, Outlet } from "react-router-dom";
 const HostLayout = () => {
   const categories = [
     { name: "Dashboard", url: "/host" },
-    { name: "Income", url: "/host/income" },
-    { name: "Vans", url: "/host/vans" },
-    { name: "Reviews", url: "/host/reviews" },
+    { name: "Income", url: "income" },
+    { name: "Vans", url: "vans" },
+    { name: "Reviews", url: "reviews" },
   ];
   return (
     <>
