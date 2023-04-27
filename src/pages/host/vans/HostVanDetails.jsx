@@ -1,18 +1,26 @@
 import { useEffect, useState } from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link, NavLink, useParams } from "react-router-dom";
 
 const HostVanDetails = () => {
   const { id } = useParams();
   const [vanDetails, setVanDetails] = useState({});
   const { imageUrl, type, name, price, description } = vanDetails;
   const [loading, setLoading] = useState(false);
+  const categories = [
+    { name: "Details", url: `/host/van/${id}/details` },
+    { name: "Pricing", url: `/host/van/${id}/pricing` },
+    { name: "Photos", url: `/host/van/${id}/photos` },
+  ];
   const getVanDetails = async () => {
     try {
       setLoading(true);
-      const response = await fetch(`/host/vans/${id}`);
+
+      console.log("id", id);
+      const response = await fetch(`/api/host/vans/${id}`);
       const vanData = await response.json();
       setLoading(false);
-      setVanDetails(vanData?.vans);
+      console.log("id", vanData.vans);
+      setVanDetails(vanData?.vans?.[0]);
     } catch (err) {
       setLoading(false);
       return;
@@ -26,9 +34,9 @@ const HostVanDetails = () => {
       {loading ? (
         <p>loading...</p>
       ) : (
-        <div className="space-y-10">
+        <div className="space-y-6">
           <Link
-            to="/vans"
+            to="/host/vans"
             className="flex items-center gap-2 text-sm underline"
           >
             <svg
@@ -67,10 +75,24 @@ const HostVanDetails = () => {
                 {price}$/<span className="font-normal">day</span>
               </p>
               <h5 className="text-base text-gray-900">{description}</h5>
-              <button className="w-full p-3 text-base text-white bg-orange-400 rounded-md">
-                Rent this car
-              </button>
             </div>
+          </div>
+
+          <div className="flex flex-wrap gap-4">
+            {categories.map((category, index) => (
+              <NavLink
+                key={index}
+                to={category.url}
+                end
+                className={({ isActive }) =>
+                  `text-xl text-slate-600 hover:underline hover:text-slate-800 ${
+                    isActive ? "font-bold underline" : ""
+                  }`
+                }
+              >
+                {category.name}
+              </NavLink>
+            ))}
           </div>
         </div>
       )}

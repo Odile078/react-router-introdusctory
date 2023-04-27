@@ -4,7 +4,7 @@ import Navbar from "./Navbar";
 
 const BlankLayout = () => {
   return (
-    <div className="flex flex-col min-h-screen xl:mx-auto max-w-7xl">
+    <div className="flex flex-col min-h-screen xl:mx-auto max-w-7xl bg-orange-50">
       <Navbar />
       <main className="flex flex-col flex-1">
         <Outlet />

@@ -6,10 +6,12 @@ const HostVanList = () => {
   const [loading, setLoading] = useState(false);
   const getVans = async () => {
     try {
+      console.log("fetch");
       setLoading(true);
-      const response = await fetch("/host/vans");
+      const response = await fetch("/api/host/vans");
       const vansList = await response.json();
       setLoading(false);
+      console.log("fetch", vansList);
       setVans(vansList?.vans);
     } catch (err) {
       setLoading(false);
@@ -20,13 +22,13 @@ const HostVanList = () => {
     getVans();
   }, []);
   return (
-    <div className="flex-1 p-4 my-6 space-y-10 text-4xl font-bold text-gray-900">
+    <div className="flex-1 mb-6 space-y-10 text-4xl font-bold text-gray-900">
       <div className="space-y-6">
-        <h1 className="text-3xl font-bold">Your listed vans</h1>
+        <h1 className="text-xl font-bold">Your listed vans</h1>
       </div>
       <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 ">
         {loading ? (
-          <p>Loading...</p>
+          <p className="text-base text-gray-600">Loading...</p>
         ) : (
           vans.map((van) => <HostVan key={van.id} {...van} />)
         )}

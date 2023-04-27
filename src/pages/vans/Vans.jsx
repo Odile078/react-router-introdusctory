@@ -7,7 +7,7 @@ const Vans = () => {
   const getVans = async () => {
     try {
       setLoading(true);
-      const response = await fetch("/vans");
+      const response = await fetch("/api/vans");
       const vansList = await response.json();
       setLoading(false);
       setVans(vansList?.vans);
