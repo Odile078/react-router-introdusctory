@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Link, NavLink, useParams } from "react-router-dom";
+import { Link, NavLink, Outlet, useParams } from "react-router-dom";
 
 const HostVanDetails = () => {
   const { id } = useParams();
@@ -7,9 +7,9 @@ const HostVanDetails = () => {
   const { imageUrl, type, name, price, description } = vanDetails;
   const [loading, setLoading] = useState(false);
   const categories = [
-    { name: "Details", url: `/host/van/${id}/details` },
-    { name: "Pricing", url: `/host/van/${id}/pricing` },
-    { name: "Photos", url: `/host/van/${id}/photos` },
+    { name: "Details", url: `info` },
+    { name: "Pricing", url: `pricing` },
+    { name: "Photos", url: `photos` },
   ];
   const getVanDetails = async () => {
     try {
@@ -94,6 +94,7 @@ const HostVanDetails = () => {
               </NavLink>
             ))}
           </div>
+          <Outlet />
         </div>
       )}
     </div>
