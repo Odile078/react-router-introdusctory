@@ -1,6 +1,7 @@
-import { Link, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
-const VanDetails = () => {
+import { Link, useParams } from "react-router-dom";
+
+const HostVanDetails = () => {
   const { id } = useParams();
   const [vanDetails, setVanDetails] = useState({});
   const { imageUrl, type, name, price, description } = vanDetails;
@@ -8,7 +9,7 @@ const VanDetails = () => {
   const getVanDetails = async () => {
     try {
       setLoading(true);
-      const response = await fetch(`/vans/${id}`);
+      const response = await fetch(`/host/vans/${id}`);
       const vanData = await response.json();
       setLoading(false);
       setVanDetails(vanData?.vans);
@@ -77,4 +78,4 @@ const VanDetails = () => {
   );
 };
 
-export default VanDetails;
+export default HostVanDetails;
