@@ -2,7 +2,7 @@ import { Link, NavLink, Outlet } from "react-router-dom";
 
 const HostLayout = () => {
   const categories = [
-    { name: "Dashboard", url: "/host" },
+    { name: "Dashboard", url: "." },
     { name: "Income", url: "income" },
     { name: "Vans", url: "vans" },
     { name: "Reviews", url: "reviews" },

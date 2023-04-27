@@ -13,9 +13,9 @@ const Navbar = () => {
 
       <div className="flex gap-6">
         {[
-          { name: "Host", url: "/host" },
-          { name: "About", url: "/about" },
-          { name: "Vans", url: "/vans" },
+          { name: "Host", url: "." },
+          { name: "About", url: "about" },
+          { name: "Vans", url: "vans" },
         ].map((link, index) => (
           <NavLink
             key={index}
