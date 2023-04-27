@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import Logo from "../../assets/images/logo-small.svg";
 const Navbar = () => {
   return (
@@ -17,13 +17,17 @@ const Navbar = () => {
           { name: "About", url: "/about" },
           { name: "Vans", url: "/vans" },
         ].map((link, index) => (
-          <Link
+          <NavLink
             key={index}
             to={link.url}
-            className="text-xl text-slate-600 hover:underline hover:text-slate-800"
+            className={({ isActive }) =>
+              `text-xl text-slate-600 hover:underline hover:text-slate-800 ${
+                isActive ? " font-bold underline" : ""
+              }`
+            }
           >
             {link.name}
-          </Link>
+          </NavLink>
         ))}
       </div>
     </div>

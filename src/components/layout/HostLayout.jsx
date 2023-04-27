@@ -1,4 +1,4 @@
-import { Link, Outlet } from "react-router-dom";
+import { Link, NavLink, Outlet } from "react-router-dom";
 
 const HostLayout = () => {
   const categories = [
@@ -12,13 +12,18 @@ const HostLayout = () => {
       <div className="flex flex-wrap gap-6 p-4 my-10">
         <div className="flex flex-wrap gap-4">
           {categories.map((category, index) => (
-            <Link
+            <NavLink
               key={index}
               to={category.url}
-              className="text-xl text-slate-600 hover:underline hover:text-slate-800"
+              end
+              className={({ isActive }) =>
+                `text-xl text-slate-600 hover:underline hover:text-slate-800 ${
+                  isActive ? "font-bold underline" : ""
+                }`
+              }
             >
               {category.name}
-            </Link>
+            </NavLink>
           ))}
         </div>
       </div>
