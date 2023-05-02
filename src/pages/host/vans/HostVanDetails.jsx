@@ -1,8 +1,15 @@
 import { useEffect, useState } from "react";
-import { Link, NavLink, Outlet, useParams } from "react-router-dom";
+import {
+  Link,
+  NavLink,
+  Outlet,
+  useNavigate,
+  useParams,
+} from "react-router-dom";
 
 const HostVanDetails = () => {
   const { id } = useParams();
+  const navigate = useNavigate();
   const [vanDetails, setVanDetails] = useState({});
   const { imageUrl, type, name, price, description } = vanDetails;
   const [loading, setLoading] = useState(false);
@@ -33,7 +40,7 @@ const HostVanDetails = () => {
       ) : (
         <div className="space-y-6">
           <Link
-            to="/host/vans"
+            onClick={() => navigate(-1)}
             className="flex items-center gap-2 text-sm underline"
           >
             <svg
@@ -48,7 +55,7 @@ const HostVanDetails = () => {
                 fill="#858585"
               />
             </svg>
-            <p>Clear filters</p>
+            <p>back</p>
           </Link>
           <div className="grid grid-cols-1 gap-10 md:grid-cols-2">
             <img
