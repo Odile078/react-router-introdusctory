@@ -14,12 +14,9 @@ const HostVanDetails = () => {
   const getVanDetails = async () => {
     try {
       setLoading(true);
-
-      console.log("id", id);
       const response = await fetch(`/api/host/vans/${id}`);
       const vanData = await response.json();
       setLoading(false);
-      console.log("id", vanData.vans);
       setVanDetails(vanData?.vans?.[0]);
     } catch (err) {
       setLoading(false);

@@ -6,12 +6,10 @@ const HostVanList = () => {
   const [loading, setLoading] = useState(false);
   const getVans = async () => {
     try {
-      console.log("fetch");
       setLoading(true);
       const response = await fetch("/api/host/vans");
       const vansList = await response.json();
       setLoading(false);
-      console.log("fetch", vansList);
       setVans(vansList?.vans);
     } catch (err) {
       setLoading(false);

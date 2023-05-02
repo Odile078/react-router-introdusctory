@@ -2,7 +2,6 @@ import { useOutletContext } from "react-router-dom";
 
 const HostVanInfo = () => {
   const { vanDetails } = useOutletContext();
-  console.log(("van:", vanDetails));
   return (
     <div className="space-y-2">
       <p className="text-base font-bold">
