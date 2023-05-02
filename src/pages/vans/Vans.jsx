@@ -1,13 +1,12 @@
 import { useEffect, useState } from "react";
 import Van from "../../components/cards/Van";
-import { useSearchParams } from "react-router-dom";
+import { Link, useSearchParams } from "react-router-dom";
 const Vans = () => {
   const [vans, setVans] = useState([]);
   const [filteredVans, setFilteredVans] = useState([]);
   const [loading, setLoading] = useState(false);
   const [searchParams, setSearchParams] = useSearchParams();
   const typeFilter = searchParams.get("type");
-  console.log("type filter:", typeFilter);
   const filters = ["simple", "luxury", "rugged"];
   const getVans = async () => {
     try {
@@ -24,16 +23,15 @@ const Vans = () => {
   };
 
   const filterVans = (vansList) => {
+    const vansToFilter = vansList || vans;
     const filteredList =
-      vansList ||
-      (vans &&
-        (typeFilter
-          ? vansList || vans.filter((van) => van?.type === typeFilter)
-          : vans));
-    console.log("filteredList:", filteredList, vans, typeFilter);
+      vansToFilter &&
+      (typeFilter
+        ? vansToFilter.filter((van) => van?.type === typeFilter)
+        : vansToFilter);
     setFilteredVans(filteredList);
   };
-  const clearVanFilter = () => setSearchParams({});
+
   useEffect(() => {
     getVans();
   }, []);
@@ -47,18 +45,28 @@ const Vans = () => {
         <div className="flex flex-wrap justify-between gap-4 md:items-center">
           <div className="flex flex-wrap gap-4 ">
             {filters.map((filter, index) => (
-              <button
+              <Link
                 key={index}
-                onClick={() => setSearchParams({ type: filter })}
-                className="px-5 py-1 text-sm bg-orange-100 rounded"
+                to={`?type=${filter}`}
+                className={`px-5 py-1 text-sm rounded ${
+                  typeFilter && typeFilter === filter
+                    ? typeFilter === "simple"
+                      ? "bg-orange-400 text-orange-100"
+                      : typeFilter === "luxury"
+                      ? "bg-gray-900 text-orange-100"
+                      : "bg-emerald-900 text-orange-100"
+                    : "bg-orange-100"
+                }`}
               >
                 {filter}
-              </button>
+              </Link>
             ))}
           </div>
-          <button onClick={clearVanFilter} className="text-sm underline">
-            Clear filters
-          </button>
+          {typeFilter && (
+            <Link to="." className="text-sm underline">
+              Clear filters
+            </Link>
+          )}
         </div>
       </div>
       <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 ">
