@@ -6,6 +6,7 @@ import {
   useNavigate,
   useParams,
 } from "react-router-dom";
+import { fetchVanDetails } from "../../../api";
 
 const HostVanDetails = () => {
   const { id } = useParams();
@@ -13,6 +14,7 @@ const HostVanDetails = () => {
   const [vanDetails, setVanDetails] = useState({});
   const { imageUrl, type, name, price, description } = vanDetails;
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState({});
   const categories = [
     { name: "Details", url: `.` },
     { name: "Pricing", url: `pricing` },
@@ -21,11 +23,11 @@ const HostVanDetails = () => {
   const getVanDetails = async () => {
     try {
       setLoading(true);
-      const response = await fetch(`/api/host/vans/${id}`);
-      const vanData = await response.json();
+      const vanData = await fetchVanDetails(id);
       setLoading(false);
-      setVanDetails(vanData?.vans?.[0]);
+      setVanDetails(vanData[0]);
     } catch (err) {
+      setError({ message: "Sorry, something went wrong, try again" });
       setLoading(false);
       return;
     }
@@ -37,6 +39,8 @@ const HostVanDetails = () => {
     <div className="flex-1 p-4">
       {loading ? (
         <p>loading...</p>
+      ) : error?.message ? (
+        <p className="text-lg text-gray-600">{error?.message}</p>
       ) : (
         <div className="space-y-6">
           <Link
