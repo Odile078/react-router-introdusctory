@@ -11,5 +11,5 @@ export const fetchHostVans = async () => {
 export const fetchVanDetails = async (id) => {
   const response = await fetch(`/api/host/vans/${id}`);
   const data = await response.json();
-  return data.vans;
+  return data.vans?.[0];
 };

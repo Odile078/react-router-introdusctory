@@ -1,29 +1,32 @@
 import { useEffect, useState } from "react";
 import Van from "../../components/cards/Van";
-import { Link, useSearchParams } from "react-router-dom";
+import { Link, useLoaderData, useSearchParams } from "react-router-dom";
 import { fetchVans } from "../../api";
+export const loader = () => {
+  return fetchVans();
+};
 const Vans = () => {
-  const [vans, setVans] = useState([]);
+  // const [vans, setVans] = useState([]);
+  const vans = useLoaderData();
   const [filteredVans, setFilteredVans] = useState([]);
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState({});
+  // const [loading, setLoading] = useState(false);
+  // const [error, setError] = useState({});
   const [searchParams, setSearchParams] = useSearchParams();
   const typeFilter = searchParams.get("type");
   const filters = ["simple", "luxury", "rugged"];
-  const getVans = async () => {
-    try {
-      setLoading(true);
-      const vansList = await fetchVans();
-      setLoading(false);
-      setVans(vansList);
-      filterVans(vansList);
-    } catch (err) {
-      setError({ message: "Sorry, something went wrong, try again" });
-      setLoading(false);
-      return;
-    }
-  };
-
+  // const getVans = async () => {
+  //   try {
+  //     setLoading(true);
+  //     const vansList = await fetchVans();
+  //     setLoading(false);
+  //     setVans(vansList);
+  //     filterVans(vansList);
+  //   } catch (err) {
+  //     setError({ message: "Sorry, something went wrong, try again" });
+  //     setLoading(false);
+  //     return;
+  //   }
+  // };
   const filterVans = (vansList) => {
     const vansToFilter = vansList || vans;
     const filteredList =
@@ -34,9 +37,9 @@ const Vans = () => {
     setFilteredVans(filteredList);
   };
 
-  useEffect(() => {
-    getVans();
-  }, []);
+  // useEffect(() => {
+  //   getVans();
+  // }, []);
   useEffect(() => {
     filterVans();
   }, [searchParams.get("type")]);
@@ -72,13 +75,9 @@ const Vans = () => {
         </div>
       </div>
       <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 ">
-        {loading ? (
-          <p>Loading...</p>
-        ) : error?.message ? (
-          <p className="text-lg text-gray-600">{error?.message}</p>
-        ) : (
-          filteredVans.map((van) => <Van key={van.id} {...van} />)
-        )}
+        {filteredVans?.map((van) => (
+          <Van key={van.id} {...van} />
+        ))}
       </div>
     </div>
   );

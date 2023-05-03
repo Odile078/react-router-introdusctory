@@ -25,7 +25,7 @@ const HostVanDetails = () => {
       setLoading(true);
       const vanData = await fetchVanDetails(id);
       setLoading(false);
-      setVanDetails(vanData[0]);
+      setVanDetails(vanData);
     } catch (err) {
       setError({ message: "Sorry, something went wrong, try again" });
       setLoading(false);
