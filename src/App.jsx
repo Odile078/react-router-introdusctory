@@ -23,6 +23,8 @@ import HostVanPrice from "./pages/host/vans/HostVanPrice";
 import HostVanPhoto from "./pages/host/vans/HostVanPhoto";
 import NotFound from "./pages/NotFound";
 import Error from "./components/Error";
+import Login from "./pages/Login";
+import Register from "./pages/Register";
 function App() {
   const router = createBrowserRouter(
     createRoutesFromElements(
@@ -57,6 +59,8 @@ function App() {
           </Route>
           <Route path="reviews" element={<Reviews />} />
         </Route>
+        <Route path="login" element={<Login />} />
+        <Route path="register" element={<Register />} />
         <Route path="*" element={<NotFound />} />
       </Route>
     )
