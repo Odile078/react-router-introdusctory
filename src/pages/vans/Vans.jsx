@@ -6,27 +6,12 @@ export const loader = () => {
   return fetchVans();
 };
 const Vans = () => {
-  // const [vans, setVans] = useState([]);
   const vans = useLoaderData();
   const [filteredVans, setFilteredVans] = useState([]);
-  // const [loading, setLoading] = useState(false);
-  // const [error, setError] = useState({});
   const [searchParams, setSearchParams] = useSearchParams();
   const typeFilter = searchParams.get("type");
   const filters = ["simple", "luxury", "rugged"];
-  // const getVans = async () => {
-  //   try {
-  //     setLoading(true);
-  //     const vansList = await fetchVans();
-  //     setLoading(false);
-  //     setVans(vansList);
-  //     filterVans(vansList);
-  //   } catch (err) {
-  //     setError({ message: "Sorry, something went wrong, try again" });
-  //     setLoading(false);
-  //     return;
-  //   }
-  // };
+
   const filterVans = (vansList) => {
     const vansToFilter = vansList || vans;
     const filteredList =
@@ -37,9 +22,6 @@ const Vans = () => {
     setFilteredVans(filteredList);
   };
 
-  // useEffect(() => {
-  //   getVans();
-  // }, []);
   useEffect(() => {
     filterVans();
   }, [searchParams.get("type")]);
