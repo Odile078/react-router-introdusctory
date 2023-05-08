@@ -15,7 +15,7 @@ const Login = () => {
         />
         <input
           type="password"
-          placeholder="Email address"
+          placeholder="Password"
           className="w-full p-5 text-gray-600 bg-white border border-gray-100 rounded-md focus:outline-none focus:border-gray-200 placeholder:text-gray-600"
         />
         <button className="w-full p-5 my-4 text-white bg-orange-400 rounded-md">
