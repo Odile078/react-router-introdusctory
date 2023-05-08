@@ -1,40 +1,25 @@
-import { useEffect, useState } from "react";
 import {
   Link,
   NavLink,
   Outlet,
+  useLoaderData,
   useNavigate,
-  useParams,
 } from "react-router-dom";
 import { fetchVanDetails } from "../../../api";
-
+export const loader = async ({ params }) => {
+  const vanDetails = await fetchVanDetails(params.id);
+  return vanDetails;
+};
 const HostVanDetails = () => {
-  const { id } = useParams();
   const navigate = useNavigate();
-  const [vanDetails, setVanDetails] = useState({});
+  const vanDetails = useLoaderData();
   const { imageUrl, type, name, price, description } = vanDetails;
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState({});
   const categories = [
     { name: "Details", url: `.` },
     { name: "Pricing", url: `pricing` },
     { name: "Photos", url: `photos` },
   ];
-  const getVanDetails = async () => {
-    try {
-      setLoading(true);
-      const vanData = await fetchVanDetails(id);
-      setLoading(false);
-      setVanDetails(vanData);
-    } catch (err) {
-      setError({ message: "Sorry, something went wrong, try again" });
-      setLoading(false);
-      return;
-    }
-  };
-  useEffect(() => {
-    getVanDetails();
-  }, [id]);
+
   return (
     <div className="flex-1 p-4">
       {loading ? (

@@ -32,5 +32,5 @@ export const fetchVanDetails = async (id) => {
     };
   }
   const data = await response.json();
-  return data.vans?.[0];
+  return data?.vans?.[0] || {};
 };
