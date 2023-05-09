@@ -29,6 +29,8 @@ import NotFound from "./pages/NotFound";
 import Error from "./components/Error";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
+import AuthRequiredLoader from "./utils/AuthRequiredLoader";
+import { requireAuth } from "./utils/RequireAuth";
 function App() {
   const router = createBrowserRouter(
     createRoutesFromElements(
@@ -47,12 +49,12 @@ function App() {
           errorElement={<Error />}
           loader={vanDetailsLoader}
         />
-        <Route path="host" element={<HostLayout />}>
+        <Route path="host" element={<HostLayout />} loader={AuthRequiredLoader}>
           <Route
             index
             element={<Dashboard />}
             loader={hostVansLoader}
-            errorElement={<Error />}
+            // errorElement={<Error />}
           />
           <Route path="income" element={<Income />} />
           <Route
