@@ -1,12 +1,18 @@
-import { Link } from "react-router-dom";
-
+import { Link, useLoaderData } from "react-router-dom";
+export const loader = ({ request }) => {
+  return new URL(request.url).searchParams.get("message");
+};
 const Login = () => {
+  const message = useLoaderData();
   const handleFormSubmit = (event) => {
     event.preventDefault();
   };
   return (
     <div className="flex flex-col items-center justify-center gap-10 py-10">
       <h1 className="text-3xl font-bold">Sign in to your account</h1>
+      {message && (
+        <h2 className="text-red-500 my-2 text-xl font-bold">{message}</h2>
+      )}
       <form onSubmit={handleFormSubmit}>
         <input
           type="email"

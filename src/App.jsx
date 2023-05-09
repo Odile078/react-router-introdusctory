@@ -27,10 +27,9 @@ import HostVanPrice from "./pages/host/vans/HostVanPrice";
 import HostVanPhoto from "./pages/host/vans/HostVanPhoto";
 import NotFound from "./pages/NotFound";
 import Error from "./components/Error";
-import Login from "./pages/Login";
+import Login, { loader as loginLoader } from "./pages/Login";
 import Register from "./pages/Register";
 import AuthRequiredLoader from "./utils/AuthRequiredLoader";
-import { requireAuth } from "./utils/RequireAuth";
 function App() {
   const router = createBrowserRouter(
     createRoutesFromElements(
@@ -74,7 +73,7 @@ function App() {
           </Route>
           <Route path="reviews" element={<Reviews />} />
         </Route>
-        <Route path="login" element={<Login />} />
+        <Route path="login" element={<Login />} loader={loginLoader} />
         <Route path="register" element={<Register />} />
         <Route path="*" element={<NotFound />} />
       </Route>
