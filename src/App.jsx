@@ -27,7 +27,10 @@ import HostVanPrice from "./pages/host/vans/HostVanPrice";
 import HostVanPhoto from "./pages/host/vans/HostVanPhoto";
 import NotFound from "./pages/NotFound";
 import Error from "./components/Error";
-import Login, { loader as loginLoader } from "./pages/Login";
+import Login, {
+  loader as loginLoader,
+  action as loginAction,
+} from "./pages/Login";
 import Register from "./pages/Register";
 import AuthRequiredLoader from "./utils/AuthRequiredLoader";
 function App() {
@@ -73,7 +76,12 @@ function App() {
           </Route>
           <Route path="reviews" element={<Reviews />} />
         </Route>
-        <Route path="login" element={<Login />} loader={loginLoader} />
+        <Route
+          path="login"
+          element={<Login />}
+          loader={loginLoader}
+          action={loginAction}
+        />
         <Route path="register" element={<Register />} />
         <Route path="*" element={<NotFound />} />
       </Route>
