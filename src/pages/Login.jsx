@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link, useLoaderData } from "react-router-dom";
+import { Link, useLoaderData, useNavigate } from "react-router-dom";
 import { loginUser } from "../api";
 export const loader = ({ request }) => {
   return new URL(request.url).searchParams.get("message");
@@ -12,7 +12,7 @@ const Login = () => {
   const [status, setStatus] = useState("idle");
   const [error, setError] = useState({});
   const message = useLoaderData();
-
+  const navigate = useNavigate();
   function handleChange(e) {
     const { name, value } = e.target;
     setLoginFormData((prev) => ({
@@ -20,17 +20,13 @@ const Login = () => {
       [name]: value,
     }));
   }
-  console.log(status);
-  console.log(error);
   const handleFormSubmit = (event) => {
     setStatus("submitting");
     event.preventDefault();
-    console.log("-----------------------");
-    console.log(loginFormData);
     loginUser(loginFormData)
       .then((data) => {
         setError({});
-        console.log(data);
+        navigate("/host", { replace: true });
       })
       .catch((err) => {
         console.log("err", err, err.message);
