@@ -5,6 +5,7 @@ import {
   redirect,
   useActionData,
   useLoaderData,
+  useLocation,
   useNavigation,
 } from "react-router-dom";
 import { loginUser } from "../api";
@@ -12,14 +13,15 @@ export const loader = ({ request }) => {
   return new URL(request.url).searchParams.get("message");
 };
 export const action = async ({ request }) => {
-  console.log("I'm the login function", request);
   const formData = await request.formData();
   const email = formData.get("email");
   const password = formData.get("password");
+  const pathname =
+    new URL(request.url).searchParams.get("redirectTo") || "/host";
   try {
     const data = await loginUser({ email, password });
     localStorage.setItem("loggedin", true);
-    return redirect("/host");
+    return redirect(pathname);
   } catch (err) {
     return err?.message;
   }
@@ -29,7 +31,6 @@ const Login = () => {
   const message = useLoaderData();
   const errorMessage = useActionData();
   const navigation = useNavigation();
-  console.log(navigation);
   return (
     <div className="flex flex-col items-center justify-center gap-10 py-10">
       <h1 className="text-3xl font-bold">Sign in to your account</h1>

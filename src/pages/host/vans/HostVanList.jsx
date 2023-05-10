@@ -1,9 +1,7 @@
 import HostVan from "../../../components/cards/HostVan";
 import { fetchHostVans } from "../../../api";
 import { useLoaderData } from "react-router-dom";
-import { requireAuth } from "../../../utils/RequireAuth";
 export const loader = async () => {
-  // await requireAuth();
   const list = await fetchHostVans();
   return list;
 };
