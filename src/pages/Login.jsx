@@ -3,8 +3,9 @@ import {
   Form,
   Link,
   redirect,
+  useActionData,
   useLoaderData,
-  useNavigate,
+  useNavigation,
 } from "react-router-dom";
 import { loginUser } from "../api";
 export const loader = ({ request }) => {
@@ -20,24 +21,24 @@ export const action = async ({ request }) => {
     localStorage.setItem("loggedin", true);
     return redirect("/host");
   } catch (err) {
-    console.log(err);
+    return err?.message;
   }
-
-  return null;
 };
+
 const Login = () => {
   const message = useLoaderData();
+  const errorMessage = useActionData();
+  const navigation = useNavigation();
+  console.log(navigation);
   return (
     <div className="flex flex-col items-center justify-center gap-10 py-10">
       <h1 className="text-3xl font-bold">Sign in to your account</h1>
       {message && (
         <h2 className="my-2 text-xl font-bold text-red-500">{message}</h2>
       )}
-      {/* {error?.message && (
-        <h2 className="my-2 text-xl font-bold text-red-500">
-          {error?.message}
-        </h2>
-      )} */}
+      {errorMessage && (
+        <h2 className="my-2 text-xl font-bold text-red-500">{errorMessage}</h2>
+      )}
       <Form method="post" replace>
         <input
           type="email"
@@ -52,10 +53,10 @@ const Login = () => {
           className="w-full p-5 text-gray-600 bg-white border border-gray-100 rounded-md focus:outline-none focus:border-gray-200 placeholder:text-gray-600"
         />
         <button
-          // disabled={status === "submitting" ? true : false}
+          disabled={navigation.state !== "idle" ? true : false}
           className="w-full p-3 my-4 text-white bg-orange-400 rounded-md disabled:bg-orange-300"
         >
-          {/* {status === "submitting" ? "Signing in" : "Sign in"} */}Sign in
+          {navigation.state !== "idle" ? "Signing in..." : "Sign in"}
         </button>
       </Form>
       <p className="text-base">
