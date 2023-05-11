@@ -42,7 +42,7 @@ const VanDetails = () => {
                 fill="#858585"
               />
             </svg>
-            <p>Clear filters</p>
+            <p>back</p>
           </Link>
           <div className="grid grid-cols-1 gap-10 md:grid-cols-2">
             <img

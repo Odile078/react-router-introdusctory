@@ -48,7 +48,7 @@ const HostVanDetails = () => {
                 fill="#858585"
               />
             </svg>
-            <p>Clear filters</p>
+            <p>back</p>
           </Link>
           <div className="grid grid-cols-1 gap-10 md:grid-cols-2">
             <img
@@ -71,7 +71,6 @@ const HostVanDetails = () => {
               <p className="text-base font-bold ">
                 {price}$/<span className="font-normal">day</span>
               </p>
-              <h5 className="text-base text-gray-900">{description}</h5>
             </div>
           </div>
 
