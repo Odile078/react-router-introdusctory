@@ -52,12 +52,7 @@ function App() {
           loader={vanDetailsLoader}
         />
         <Route path="host" element={<HostLayout />} loader={AuthRequiredLoader}>
-          <Route
-            index
-            element={<Dashboard />}
-            loader={hostVansLoader}
-            // errorElement={<Error />}
-          />
+          <Route index element={<Dashboard />} loader={hostVansLoader} />
           <Route path="income" element={<Income />} />
           <Route
             path="vans"
