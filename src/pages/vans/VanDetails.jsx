@@ -21,7 +21,7 @@ const VanDetails = () => {
     getVanDetails();
   }, [id]);
   return (
-    <main className="flex-1 p-4">
+    <div className="flex-1 p-4">
       {loading ? (
         <p>loading...</p>
       ) : (
@@ -42,7 +42,7 @@ const VanDetails = () => {
                 fill="#858585"
               />
             </svg>
-            <p>Clear filters</p>
+            <p>back</p>
           </Link>
           <div className="grid grid-cols-1 gap-10 md:grid-cols-2">
             <img
@@ -73,7 +73,7 @@ const VanDetails = () => {
           </div>
         </div>
       )}
-    </main>
+    </div>
   );
 };
 
