@@ -62,7 +62,6 @@ const HostVanDetails = () => {
             <p className="text-base font-bold ">
               {price}$/<span className="font-normal">day</span>
             </p>
-            <h5 className="text-base text-gray-900">{description}</h5>
           </div>
         </div>
 
