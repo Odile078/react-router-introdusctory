@@ -1,6 +1,6 @@
 import HostVan from "../../../components/cards/HostVan";
 import { fetchHostVans } from "../../../api";
-import { Await, useLoaderData } from "react-router-dom";
+import { Await, defer, useLoaderData } from "react-router-dom";
 import { Suspense } from "react";
 export const loader = async () => {
   return defer({ hostVansPromise: fetchHostVans() });
