@@ -1,7 +1,13 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
-import { collection, getDocs, getFirestore } from "firebase/firestore/lite";
+import {
+  collection,
+  doc,
+  getDoc,
+  getDocs,
+  getFirestore,
+} from "firebase/firestore/lite";
 
 const firebaseConfig = {
   apiKey: "AIzaSyAKWt5tlq_zH_5LSgu1bJKQFQAiiDuEdTE",
@@ -28,6 +34,16 @@ export const fetchVans = async () => {
   }));
   return dataArr;
 };
+
+export const fetchVanDetails = async (id) => {
+  const docRef = doc(db, "vans", id);
+  const vanSnapshot = await getDoc(docRef);
+  console.log(vanSnapshot);
+  return {
+    ...vanSnapshot.data(),
+    id: vanSnapshot.id,
+  };
+};
 // export const fetchVans = async () => {
 //   const response = await fetch("/api/vans");
 //   if (!response.ok) {
@@ -52,18 +68,18 @@ export const fetchHostVans = async () => {
   const data = await response.json();
   return data.vans;
 };
-export const fetchVanDetails = async (id) => {
-  const response = await fetch(`/api/host/vans/${id}`);
-  if (!response.ok) {
-    throw {
-      message: "Failed to fetch the van details",
-      statusText: response.statusText,
-      status: response.status,
-    };
-  }
-  const data = await response.json();
-  return data?.vans?.[0] || {};
-};
+// export const fetchVanDetails = async (id) => {
+//   const response = await fetch(`/api/host/vans/${id}`);
+//   if (!response.ok) {
+//     throw {
+//       message: "Failed to fetch the van details",
+//       statusText: response.statusText,
+//       status: response.status,
+//     };
+//   }
+//   const data = await response.json();
+//   return data?.vans?.[0] || {};
+// };
 
 export const loginUser = async (creds) => {
   const res = await fetch("/api/login", {
