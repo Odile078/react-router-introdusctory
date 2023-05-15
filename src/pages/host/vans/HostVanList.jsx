@@ -10,12 +10,12 @@ const HostVanList = () => {
     try {
       setLoading(true);
       const vansList = await fetchHostVans();
-      setLoading(false);
       setVans(vansList);
     } catch (err) {
       setError({ message: "Sorry, something went wrong, try again" });
-      setLoading(false);
       return;
+    } finally {
+      setLoading(false);
     }
   };
   useEffect(() => {
