@@ -1,20 +1,23 @@
-import { Link, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
+import { fetchVanDetails } from "../../api";
 const VanDetails = () => {
   const { id } = useParams();
+  const navigate = useNavigate();
   const [vanDetails, setVanDetails] = useState({});
   const { imageUrl, type, name, price, description } = vanDetails;
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState({});
   const getVanDetails = async () => {
     try {
       setLoading(true);
-      const response = await fetch(`/api/vans/${id}`);
-      const vanData = await response.json();
-      setLoading(false);
-      setVanDetails(vanData?.vans);
+      const vanData = await fetchVanDetails(id);
+      setVanDetails(vanData[0]);
     } catch (err) {
-      setLoading(false);
+      setError({ message: "Sorry, something went wrong, try again" });
       return;
+    } finally {
+      setLoading(false);
     }
   };
   useEffect(() => {
@@ -24,10 +27,12 @@ const VanDetails = () => {
     <div className="flex-1 p-4">
       {loading ? (
         <p>loading...</p>
+      ) : error?.message ? (
+        <p className="text-lg text-gray-600">{error?.message}</p>
       ) : (
         <div className="space-y-10">
           <Link
-            to="/vans"
+            onClick={() => navigate(-1)}
             className="flex items-center gap-2 text-sm underline"
           >
             <svg

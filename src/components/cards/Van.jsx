@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 const Van = ({ id, imageUrl, type, name, price }) => {
   return (
-    <Link to={`/vans/${id}`} className="block">
+    <Link to={id} className="block">
       <img
         src={imageUrl}
         className="object-cover object-center w-full rounded-md h-60"

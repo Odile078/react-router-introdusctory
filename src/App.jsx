@@ -14,8 +14,9 @@ import HostVanDetails from "./pages/host/vans/HostVanDetails";
 import HostVanInfo from "./pages/host/vans/HostVanInfo";
 import HostVanPrice from "./pages/host/vans/HostVanPrice";
 import HostVanPhoto from "./pages/host/vans/HostVanPhoto";
+import NotFound from "./pages/NotFound";
 
-function App() {
+const App = () => {
   return (
     <BrowserRouter>
       <Routes>
@@ -35,10 +36,11 @@ function App() {
             </Route>
             <Route path="reviews" element={<Reviews />} />
           </Route>
+          <Route path="*" element={<NotFound />} />
         </Route>
       </Routes>
     </BrowserRouter>
   );
-}
+};
 
 export default App;

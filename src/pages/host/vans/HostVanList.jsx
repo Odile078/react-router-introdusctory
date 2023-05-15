@@ -1,19 +1,21 @@
 import { useEffect, useState } from "react";
 import HostVan from "../../../components/cards/HostVan";
+import { fetchHostVans } from "../../../api";
 
 const HostVanList = () => {
   const [vans, setVans] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState({});
   const getVans = async () => {
     try {
       setLoading(true);
-      const response = await fetch("/api/host/vans");
-      const vansList = await response.json();
-      setLoading(false);
-      setVans(vansList?.vans);
+      const vansList = await fetchHostVans();
+      setVans(vansList);
     } catch (err) {
-      setLoading(false);
+      setError({ message: "Sorry, something went wrong, try again" });
       return;
+    } finally {
+      setLoading(false);
     }
   };
   useEffect(() => {
@@ -27,6 +29,8 @@ const HostVanList = () => {
       <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 ">
         {loading ? (
           <p className="text-base text-gray-600">Loading...</p>
+        ) : error?.message ? (
+          <p className="text-lg text-gray-600">{error?.message}</p>
         ) : (
           vans.map((van) => <HostVan key={van.id} {...van} />)
         )}
