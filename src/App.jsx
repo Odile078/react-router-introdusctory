@@ -16,7 +16,7 @@ import HostVanPrice from "./pages/host/vans/HostVanPrice";
 import HostVanPhoto from "./pages/host/vans/HostVanPhoto";
 import NotFound from "./pages/NotFound";
 
-function App() {
+const App = () => {
   return (
     <BrowserRouter>
       <Routes>
@@ -41,6 +41,6 @@ function App() {
       </Routes>
     </BrowserRouter>
   );
-}
+};
 
 export default App;
