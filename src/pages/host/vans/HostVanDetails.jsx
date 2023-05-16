@@ -27,7 +27,6 @@ const HostVanDetails = () => {
       setVanDetails(vanData[0]);
     } catch (err) {
       setError({ message: "Sorry, something went wrong, try again" });
-      return;
     } finally {
       setLoading(false);
     }

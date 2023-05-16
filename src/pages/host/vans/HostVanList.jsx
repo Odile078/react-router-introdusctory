@@ -13,7 +13,6 @@ const HostVanList = () => {
       setVans(vansList);
     } catch (err) {
       setError({ message: "Sorry, something went wrong, try again" });
-      return;
     } finally {
       setLoading(false);
     }

@@ -14,13 +14,12 @@ const Vans = () => {
     try {
       setLoading(true);
       const vansList = await fetchVans();
-      setLoading(false);
       setVans(vansList);
       filterVans(vansList);
     } catch (err) {
       setError({ message: "Sorry, something went wrong, try again" });
+    } finally {
       setLoading(false);
-      return;
     }
   };
 
