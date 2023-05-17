@@ -1,4 +1,4 @@
-import { Link, NavLink, Outlet } from "react-router-dom";
+import { NavLink, Outlet } from "react-router-dom";
 
 const HostLayout = () => {
   const categories = [
@@ -15,7 +15,7 @@ const HostLayout = () => {
             <NavLink
               key={index}
               to={category.url}
-              end
+              end={category.name === "Vans" ? false : true}
               className={({ isActive }) =>
                 `text-xl text-slate-600 hover:underline hover:text-slate-800 ${
                   isActive ? "font-bold underline" : ""
