@@ -16,10 +16,11 @@ const VanDetails = () => {
       setVanDetails(vanData);
     } catch (err) {
       setError({ message: "Sorry, something went wrong, try again" });
+    } finally {
       setLoading(false);
-      return;
     }
   };
+  console.log("--------", loading);
   useEffect(() => {
     getVanDetails();
   }, [id]);

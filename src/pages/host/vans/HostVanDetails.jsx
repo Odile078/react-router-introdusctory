@@ -24,12 +24,11 @@ const HostVanDetails = () => {
     try {
       setLoading(true);
       const vanData = await fetchVanDetails(id);
-      setLoading(false);
-      setVanDetails(vanData);
+      setVanDetails(vanData[0]);
     } catch (err) {
       setError({ message: "Sorry, something went wrong, try again" });
+    } finally {
       setLoading(false);
-      return;
     }
   };
   useEffect(() => {
