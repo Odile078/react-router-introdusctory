@@ -1,7 +1,6 @@
-import React from "react";
 import { Link } from "react-router-dom";
 
-function NotFound() {
+const NotFound = () => {
   return (
     <div className="m-auto ">
       <h1 className="text-3xl font-bold text-center">
@@ -12,6 +11,6 @@ function NotFound() {
       </p>
     </div>
   );
-}
+};
 
 export default NotFound;

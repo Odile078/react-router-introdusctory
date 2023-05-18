@@ -19,7 +19,6 @@ const HostVanDetails = () => {
     { name: "Pricing", url: `pricing` },
     { name: "Photos", url: `photos` },
   ];
-
   return (
     <div className="flex-1 p-4">
       <div className="space-y-6">

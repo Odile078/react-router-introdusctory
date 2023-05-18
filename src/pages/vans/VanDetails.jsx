@@ -8,7 +8,6 @@ const VanDetails = () => {
   const navigate = useNavigate();
   const vanDetails = useLoaderData();
   const { imageUrl, type, name, price, description } = vanDetails;
-
   return (
     <div className="flex-1 p-4">
       <div className="space-y-10">
