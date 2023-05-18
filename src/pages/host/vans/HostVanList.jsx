@@ -1,8 +1,8 @@
 import HostVan from "../../../components/cards/HostVan";
 import { fetchHostVans } from "../../../api";
 import { useLoaderData } from "react-router-dom";
-export const loader = () => {
-  const list = fetchHostVans();
+export const loader = async () => {
+  const list = await fetchHostVans();
   return list;
 };
 const HostVanList = () => {
