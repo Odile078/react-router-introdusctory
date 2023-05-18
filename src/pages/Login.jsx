@@ -1,11 +1,9 @@
-import { useState } from "react";
 import {
   Form,
   Link,
   redirect,
   useActionData,
   useLoaderData,
-  useLocation,
   useNavigation,
 } from "react-router-dom";
 import { loginUser } from "../api";
