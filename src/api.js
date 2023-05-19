@@ -10,13 +10,13 @@ import {
 } from "firebase/firestore/lite";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyAKWt5tlq_zH_5LSgu1bJKQFQAiiDuEdTE",
-  authDomain: "vanlife-6b17b.firebaseapp.com",
-  projectId: "vanlife-6b17b",
-  storageBucket: "vanlife-6b17b.appspot.com",
-  messagingSenderId: "11969785324",
-  appId: "1:11969785324:web:588a7d5d5e7ce1766fe4c9",
-  measurementId: "G-2QZMKK9L1S",
+  apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
+  authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN,
+  projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID,
+  storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: import.meta.env.VITE_FIREBASE_MESSING_SENDER_ID,
+  appId: import.meta.env.VITE_FIREBASE_APP_ID,
+  measurementId: import.meta.env.VITE_FIREBASE_MEASUREMENT_ID,
 };
 
 // Initialize Firebase
