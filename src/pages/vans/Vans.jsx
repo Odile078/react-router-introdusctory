@@ -60,7 +60,12 @@ export const VansList = ({ vans }) => {
       </div>
       <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 ">
         {filteredVans?.map((van) => (
-          <Van key={van.id} {...van} />
+          <Van
+            key={van.id}
+            {...van}
+            typeFilter={typeFilter}
+            searchParams={searchParams}
+          />
         ))}
       </div>
     </>
@@ -74,7 +79,7 @@ const Vans = () => {
     <div className="flex-1 p-4 my-6 space-y-10 text-4xl font-bold text-gray-900">
       <h1 className="text-3xl font-bold">Explore our van options</h1>
       <Suspense
-        fallback={<h1 className="text-gray-600 text-lg">Loading...</h1>}
+        fallback={<h1 className="text-lg text-gray-600">Loading...</h1>}
       >
         <Await resolve={vansPromise.vansPromise}>
           {(vansPromise) => <VansList vans={vansPromise} />}

@@ -3,6 +3,7 @@ import {
   Link,
   defer,
   useLoaderData,
+  useLocation,
   useNavigate,
 } from "react-router-dom";
 import { fetchVanDetails } from "../../api";
@@ -13,8 +14,11 @@ export const loader = async ({ params }) => {
 };
 const VanDetails = () => {
   const navigate = useNavigate();
+  const location = useLocation();
   const vanDetailsPromise = useLoaderData();
 
+  const search = location.state?.search || "";
+  const typeFilter = location.state?.type || "all";
   return (
     <Suspense
       fallback={<h1 className="p-4 text-lg text-gray-600">Loading...</h1>}
@@ -27,7 +31,9 @@ const VanDetails = () => {
             <div className="flex-1 p-4">
               <div className="space-y-10">
                 <Link
-                  onClick={() => navigate(-1)}
+                  // onClick={() => navigate(-1)}
+                  to={`..${search}`}
+                  relative="path"
                   className="flex items-center gap-2 text-sm underline"
                 >
                   <svg
@@ -42,7 +48,7 @@ const VanDetails = () => {
                       fill="#858585"
                     />
                   </svg>
-                  <p>back</p>
+                  <p>back to {typeFilter} vans</p>
                 </Link>
                 <div className="grid grid-cols-1 gap-10 md:grid-cols-2">
                   <img

@@ -1,8 +1,15 @@
 import { Link } from "react-router-dom";
 
-const Van = ({ id, imageUrl, type, name, price }) => {
+const Van = ({ id, imageUrl, type, name, price, typeFilter, searchParams }) => {
   return (
-    <Link to={id} className="block">
+    <Link
+      to={id}
+      state={{
+        search: `?${searchParams.toString()}`,
+        type: typeFilter,
+      }}
+      className="block"
+    >
       <img
         src={imageUrl}
         className="object-cover object-center w-full rounded-md h-60"
