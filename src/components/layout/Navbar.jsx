@@ -10,7 +10,7 @@ const Navbar = () => {
 
   return (
     <div className="flex items-center justify-between gap-4 px-4 py-9 bg-orange-50">
-      <Link to="/" className="block" end="true">
+      <Link to="/" className="block">
         <img
           src={Logo}
           className="object-contain object-center w-32 sm:w-44"
